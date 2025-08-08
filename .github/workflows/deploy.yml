@@ -1,0 +1,26 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main  # Cambiado a 'main' según tu rama actual
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Paso 1: Check out el código
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    # Paso 2: Instalar Firebase CLI
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+
+    # Paso 3: Desplegar a Firebase Hosting
+    - name: Deploy to Firebase Hosting
+      run: firebase deploy --project $FIREBASE_PROJECT_ID --token $FIREBASE_AUTH_TOKEN
+      env:
+        FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+        FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
