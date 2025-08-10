@@ -472,9 +472,9 @@ section:last-child {
   padding: 0 !important;
   overflow: hidden;
   background-image: url(../img/nicohero.png);
-  background-size: cover;
+  background-size: contain; /* Cambiar a 'contain' para ajustar la imagen */
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right center; /* Asegurar que esté a la derecha */
 }
 .hero h1 {
   font-size: 68px;
