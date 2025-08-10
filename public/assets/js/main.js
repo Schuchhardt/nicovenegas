@@ -100,7 +100,20 @@ $(function () {
     percentPosition: true,
     resize: false,
   });
+// Añadir desplazamiento suave a la navegación
 
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ... rest of the existing code ...
   $(".filter-list li").on("click", function (e) {
     e.preventDefault();
     $(".filter-list li.active").removeClass("active");
